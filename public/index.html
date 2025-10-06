@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OSM Shops - test</title>
+</head>
+<body>
+  <h1>OSM Shops (sample)</h1>
+  <p>Ovo prikazuje prvih 20 stavki iz shops.json</p>
+  <pre id="out">Loading...</pre>
+
+  <script>
+    fetch('/shops.json')
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById('out').innerText = JSON.stringify(d.slice(0,20), null, 2);
+      })
+      .catch(e => {
+        document.getElementById('out').innerText = 'Error: ' + e.message;
+      });
+  </script>
+</body>
+</html>
